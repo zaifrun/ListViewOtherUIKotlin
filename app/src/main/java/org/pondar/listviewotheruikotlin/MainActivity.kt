@@ -1,6 +1,6 @@
 package org.pondar.listviewotheruikotlin
 
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.ArrayAdapter
@@ -10,6 +10,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
+    //normally you should not hardcode this, but keep in the strings.xml as a string array.
     private val countries = arrayOf("Albania", "Algeria", "Armenia", "Andora", "Angola", "Argentina", "Australia", "Bahrain",
             "Bangladesh", "Barbados", "Brazil", "China", "Denmark", "Egypt", "France", "Ghana", "Hong Kong", "India", "Italy",
             "United Kingdom", "United States", "United Arab Emirates")
@@ -17,13 +18,11 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-       // setContentView(R.layout.act)
         setContentView(R.layout.activity_main)
 
         val adapter = ArrayAdapter<String>(this,
                 android.R.layout.simple_list_item_checked, countries)
 
-        //val listView = mylist
         mylist.choiceMode = ListView.CHOICE_MODE_SINGLE
 
         //Button clicked
