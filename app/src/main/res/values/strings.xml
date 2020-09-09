@@ -1,4 +1,12 @@
 <resources>
     <string name="app_name">ListViewOtherUIKotlin</string>
     <string name="my_button">My Button</string>
+
+    <string-array name="countries2">
+        <item> Denmark </item>
+        <item> Norway </item>
+        <item> Latvia </item>
+        <item> Russia </item>
+
+    </string-array>
 </resources>
