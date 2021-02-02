@@ -24,14 +24,14 @@ class MainActivity : AppCompatActivity() {
                 android.R.layout.simple_list_item_checked, countries)
 
         //below is a way of initializing the adapter with something defined in the strings.xml
-       /* adapter = ArrayAdapter<String>(this,android.R.layout.simple_list_item_checked,
-                    resources.getStringArray(R.array.countries2)
-                )*/
+       /* adapter = ArrayAdapter<String>(this, android.R.layout.simple_list_item_checked,
+                resources.getStringArray(R.array.countries2)
+        )*/
 
         mylist.choiceMode = ListView.CHOICE_MODE_SINGLE
 
         //Button clicked
-        button.setOnClickListener{
+        button.setOnClickListener {
             val selected = mylist.checkedItemPosition
             Log.d("selection", "selected: $selected")
             if (selected != ListView.INVALID_POSITION)
@@ -47,8 +47,6 @@ class MainActivity : AppCompatActivity() {
         }
 
         countries.add("United Nations")
-
-
 
     }
 }
