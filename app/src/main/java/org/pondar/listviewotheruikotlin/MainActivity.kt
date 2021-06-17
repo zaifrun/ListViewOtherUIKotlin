@@ -6,7 +6,7 @@ import android.util.Log
 import android.widget.ArrayAdapter
 import android.widget.ListView
 import android.widget.Toast
-import kotlinx.android.synthetic.main.activity_main.*
+import org.pondar.listviewotheruikotlin.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
@@ -16,11 +16,17 @@ class MainActivity : AppCompatActivity() {
             "United Kingdom", "United States", "United Arab Emirates")
 
 
+    lateinit var binding : ActivityMainBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
 
-        var adapter = ArrayAdapter<String>(this,
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        val view = binding.root
+        setContentView(view)
+
+
+        val adapter = ArrayAdapter<String>(this,
                 android.R.layout.simple_list_item_checked, countries)
 
         //below is a way of initializing the adapter with something defined in the strings.xml
@@ -28,19 +34,19 @@ class MainActivity : AppCompatActivity() {
                 resources.getStringArray(R.array.countries2)
         )*/
 
-        mylist.choiceMode = ListView.CHOICE_MODE_SINGLE
+        binding.mylist.choiceMode = ListView.CHOICE_MODE_SINGLE
 
         //Button clicked
-        button.setOnClickListener {
-            val selected = mylist.checkedItemPosition
+        binding.button.setOnClickListener {
+            val selected = binding.mylist.checkedItemPosition
             Log.d("selection", "selected: $selected")
             if (selected != ListView.INVALID_POSITION)
                 Toast.makeText(applicationContext,
                         "My selection: " + countries[selected], Toast.LENGTH_SHORT).show()
         }
 
-        mylist.adapter = adapter
-        mylist.setOnItemClickListener { parent, view, position, id ->
+        binding.mylist.adapter = adapter
+        binding.mylist.setOnItemClickListener { parent, v, position, id ->
             Log.d("listview", "itemclicked")
             val country = countries[position]
             Toast.makeText(applicationContext, "you clicked : $country", Toast.LENGTH_SHORT).show()
